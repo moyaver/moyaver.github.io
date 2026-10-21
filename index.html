@@ -53,80 +53,50 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @media (max-width:640px){.top nav a:not([href="#contact"]){display:none}}
 
 /* hero */
-.hero{padding:clamp(64px,12vw,176px) 0 clamp(56px,9vw,128px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,72px)}
+.hero{padding:clamp(64px,12vw,176px) 0 clamp(64px,10vw,144px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,72px)}
 @media (min-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.hero .lede{margin-left:auto;width:min(100%,46ch)}}
 .decl{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:10px clamp(16px,2.5vw,36px)}
 .decl .mono{color:var(--mute);padding-bottom:.45em}
 .big{font-weight:300;font-variation-settings:"wdth" 108,"wght" 300;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.1;letter-spacing:-.02em;margin:0}
 .big b{font-variation-settings:"wdth" 108,"wght" 500;font-weight:500}
-.targets{position:relative;display:grid;min-height:1.05em}
-.targets span{grid-area:1/1;display:block;white-space:nowrap;font-variation-settings:"wdth" 108,"wght" 500;font-weight:500;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.1;letter-spacing:-.02em;opacity:0;animation:tgt 10.5s infinite ease-in-out}
-.targets span:nth-child(2){animation-delay:3.5s}
-.targets span:nth-child(3){animation-delay:7s}
+.targets{display:flex;flex-wrap:wrap;gap:0 .45em}
+.targets span{white-space:nowrap;font-variation-settings:"wdth" 108,"wght" 500;font-weight:500;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.1;letter-spacing:-.02em}
+.targets span:not(:last-child)::after{content:",";color:var(--mute)}
 .targets mark{padding:0}
-.still .targets span{animation:none;opacity:0}
-.still .targets span:first-child{opacity:1}
-@media (prefers-reduced-motion:reduce){#pause{pointer-events:none;cursor:default}}
-.decl button.mono{color:var(--mute);padding-bottom:.45em;text-align:left;min-height:44px;margin-bottom:-10px}
-.decl button.mono:hover{color:var(--ink)}
-@keyframes tgt{
-  0%{opacity:0}
-  8%{opacity:1}
-  24%{opacity:1}
-  31%,100%{opacity:0}
-}
+.decl .lbl{color:var(--mute);padding-bottom:.45em}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .targets{display:flex;flex-wrap:wrap;gap:.1em .3em}
-  .targets span{grid-area:auto;animation:none;opacity:1}
 }
 .lede{font-size:clamp(1.05rem,1.35vw,1.25rem);line-height:1.55;max-width:46ch;font-variation-settings:"wdth" 100,"wght" 400}
 .lede p{max-width:none}
 
 /* sections */
-section{border-top:1px solid var(--rule);padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,112px);display:grid;grid-template-columns:minmax(0,1fr);gap:24px 64px}
+section{padding:clamp(40px,6vw,80px) 0 clamp(40px,6vw,80px);display:grid;grid-template-columns:minmax(0,1fr);gap:20px 64px}
 @media (min-width:860px){section{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
 .head{align-self:start}
 @media (min-width:860px){.head{position:sticky;top:24px}}
 .head .mono{color:var(--mute);display:block;margin-bottom:10px}
 h2{margin:0;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:clamp(1.5rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-.015em}
 .head p{margin-top:14px;color:var(--mute);max-width:34ch;font-variation-settings:"wdth" 100,"wght" 400}
-.body>*+*{margin-top:1.6em}
-h3{margin:0 0 .35em;font-size:1.05rem;font-weight:600;font-variation-settings:"wdth" 100,"wght" 600}
-.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.facts li{display:grid;grid-template-columns:minmax(120px,9rem) minmax(0,1fr);gap:4px 20px;padding:12px 0;border-bottom:1px solid var(--rule)}
-.facts li .mono{color:var(--mute);padding-top:.2em}
-@media (max-width:420px){.facts li{grid-template-columns:minmax(0,1fr)}}
-.flow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .5em;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.2;margin:0}
-.flow .arrow{font-variation-settings:"wdth" 100,"wght" 300;font-weight:300;color:var(--mute)}
-.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
-@media (max-width:520px){.apps{grid-template-columns:minmax(0,1fr)}}
-.apps li{border-top:1px solid var(--ink);padding-top:10px}
-.apps b{display:block;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:1.15rem;line-height:1.2}
-.apps span{display:block;color:var(--mute);margin-top:6px}
-.prose-list{margin:0;padding:0;list-style:none}
-.prose-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
-.prose-list li:first-child{border-top:1px solid var(--rule)}
-.prose-list b{font-weight:600}
-dl{margin:0}
-dl div{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr);gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--rule)}
-dl div:first-child{border-top:1px solid var(--rule)}
-dt{font-weight:600}
-dd{margin:0;color:var(--mute)}
-dd b{color:var(--ink);font-weight:500}
+.body>*+*{margin-top:1.4em}
+.flow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .5em;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.2;margin:0;color:var(--mute)}
+.flow .arrow{font-weight:300;font-variation-settings:"wdth" 100,"wght" 300}
+dl{margin:0;display:grid;gap:18px}
+dl div{display:grid;grid-template-columns:minmax(0,8rem) minmax(0,1fr);gap:2px 20px}
+dt{font-weight:500;font-variation-settings:"wdth" 100,"wght" 500}
+dd{margin:0;max-width:60ch}
 @media (max-width:520px){dl div{grid-template-columns:minmax(0,1fr)}}
-.skills p{max-width:none}
-.skills b{font-weight:600}
-.skills .mono{color:var(--mute);display:block;margin-bottom:4px}
+.body a{text-decoration-color:var(--rule)}
+.body a:hover{text-decoration-color:var(--hi)}
+.cv{display:inline-block;margin-top:.2em;padding:8px 0;color:var(--mute)}
 
 /* contact */
 .contact{padding-bottom:clamp(60px,8vw,120px)}
-.reach{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.reach li{display:grid;grid-template-columns:minmax(120px,9rem) minmax(0,1fr);gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.reach{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.reach li{display:grid;grid-template-columns:minmax(0,8rem) minmax(0,1fr);gap:2px 20px;align-items:baseline}
 .reach li .mono{color:var(--mute)}
-.reach a{font-variation-settings:"wdth" 104,"wght" 400;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.3;overflow-wrap:break-word;text-decoration-color:var(--rule)}
+.reach a{font-variation-settings:"wdth" 104,"wght" 400;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;overflow-wrap:break-word;text-decoration-color:var(--rule)}
 .reach a:hover{text-decoration-color:var(--hi)}
-.reach small{display:block;color:var(--mute);font-size:.9rem;margin-top:2px}
 @media (max-width:420px){.reach li{grid-template-columns:minmax(0,1fr)}}
 footer{border-top:1px solid var(--rule);padding:20px 0 48px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 24px;color:var(--mute)}
 footer a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
@@ -139,7 +109,7 @@ footer .clock::before{content:"\00B7";margin:0 .6em}
 <header class="top">
   <a class="mono" href="#top" id="top">moyaver</a>
   <nav class="mono" aria-label="Sections">
-    <a href="#neo">neo</a><a href="#yavero">yavero</a><a href="#salzburg">salzburg</a><a href="#side">side</a><a href="#before">before</a><a href="#skills">skills</a><a href="#contact">contact</a>
+    <a href="#neo">neo</a><a href="#yavero">yavero</a><a href="#salzburg">salzburg</a><a href="#side">projects</a><a href="#before">before</a><a href="#skills">tools</a><a href="#contact">contact</a>
   </nav>
   <button class="theme mono" id="theme" aria-pressed="false" aria-label="Toggle dark mode">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17A8.5 8.5 0 0 0 12 3.5z" fill="currentColor"/></svg><span>dark</span>
@@ -151,88 +121,68 @@ footer .clock::before{content:"\00B7";margin:0 .6em}
   <h1 id="h1" class="decl" style="margin:0;font:inherit" aria-label="One Kotlin codebase. Android, iOS and desktop.">
     <span class="mono">expect</span>
     <span class="big">one <b>Kotlin</b> codebase.</span>
-    <button class="mono" id="pause" type="button" aria-pressed="false" aria-label="Pause target rotation">actual</button>
-    <span class="targets" aria-hidden="true">
+    <span class="mono lbl">actual</span>
+    <span class="targets">
       <span><mark>Android</mark></span>
       <span><mark>iOS</mark></span>
       <span><mark>desktop</mark></span>
     </span>
   </h1>
   <div class="lede">
-    <p>I'm Mohammad Jaber, a senior Android engineer in Beirut. I've worked on Android apps since 2021, across telecom and fintech. Today I build with Kotlin and Compose Multiplatform for Android, iOS and desktop. I care about the parts users never see: request signing, pinned certificates, architecture tests that fail the build.</p>
+    <p>I'm Mohammad Jaber, an Android engineer in Beirut. I've been building Android apps since 2021, for a dental marketplace, a telecom and now a bank. These days most of what I write is Kotlin Multiplatform, so the same code also runs on iOS and the desktop.</p>
   </div>
 </section>
 
 <section id="neo" aria-labelledby="h-neo">
   <div class="head">
     <span class="mono">2023 to now</span>
-    <h2 id="h-neo">Fintech at Neo</h2>
-    <p>Senior Android Engineer at Neo MENA Technologies, working on a Gulf bank's investment platform.</p>
+    <h2 id="h-neo">Neo</h2>
+    <p>Senior Android engineer at Neo MENA Technologies, a fintech company in Beirut.</p>
   </div>
   <div class="body">
-    <p>Co-leading the Compose Multiplatform rewrite of a Gulf bank's investment, wealth and brokerage app for Android and iOS. The app covers onboarding and KYC, authentication, risk profiling, funds, holdings and goals. My work focuses on architecture and security, including the initial prototype, architecture decision records and internal onboarding documentation.</p>
-    <p>On the native Android app, migrated MVP and RxJava2 modules to Compose, coroutines and Flow, reduced the production crash rate by 20%, and built Maestro UI automation suites.</p>
-    <ul class="facts">
-      <li><span class="mono">stack</span><span>Kotlin 2.4, Compose Multiplatform 1.12, Navigation 3, Ktor 3.5, MVI. No DI framework: wiring is explicit, by ADR. SKIE and KMMBridge for the iOS side.</span></li>
-      <li><span class="mono">security</span><span>Device-bound request signing with ECDSA P-256 keys that never leave the Android Keystore or iOS Secure Enclave, fail-closed. Always-on certificate pinning in production. freeRASP for root, jailbreak and tamper detection. Encrypted cache.</span></li>
-      <li><span class="mono">guardrails</span><span>Konsist architecture tests, Maestro flows, Detekt, Kover, Sentry.</span></li>
-    </ul>
+    <p>A Gulf bank is rebuilding its investment app, and I co-lead the Compose Multiplatform rewrite. It is the whole app, from onboarding and ID checks through to funds and brokerage holdings, on Android and iOS from one Kotlin codebase.</p>
+    <p>I built the first prototype and wrote most of the architecture decisions down, so new people can read why things are the way they are. I also built the security side. Requests are signed with keys held in the Android Keystore and the iOS Secure Enclave, certificates are pinned, and the app checks for rooted or tampered devices.</p>
+    <p>On the native Android app I moved old RxJava screens to Compose and got the crash rate down by about a fifth.</p>
   </div>
 </section>
 
 <section id="yavero" aria-labelledby="h-yav">
   <div class="head">
-    <span class="mono">2025 to now, founder</span>
+    <span class="mono">2025 to now</span>
     <h2 id="h-yav">Yavero Auto</h2>
-    <p>A motorcycle marketplace for Lebanon. Dealerships list bikes, buyers browse and chat with the dealer. Pre-launch, in beta on TestFlight and Firebase App Distribution.</p>
+    <p>A place to buy a motorcycle in Lebanon. In beta at <a href="https://auto.yavero.io">auto.yavero.io</a>.</p>
   </div>
   <div class="body">
-    <p>I founded Yavero Labs and own the mobile side end to end. One KMP codebase produces three apps. The backend is Spring Boot and Postgres, written by a teammate.</p>
-    <ul class="apps">
-      <li><b>Consumer</b><span>Android and iOS</span></li>
-      <li><b>Dealer</b><span>Android and iOS</span></li>
-      <li><b>Admin</b><span>Desktop, JVM</span></li>
-    </ul>
-    <ul class="facts">
-      <li><span class="mono">stack</span><span>Kotlin 2.4, Compose Multiplatform 1.12, Navigation 3, Koin 4.2, Ktor 3.4, Coil 3, Paging 3, Haze, Firebase. MVI.</span></li>
-      <li><span class="mono">structure</span><span>Core and feature modules. Feature-to-feature dependencies are forbidden and Konsist enforces it.</span></li>
-      <li><span class="mono">quality</span><span>Roborazzi screenshot tests, baseline profiles and macrobenchmarks, Detekt, GitHub Actions.</span></li>
-      <li><span class="mono">web</span><a href="https://auto.yavero.io">auto.yavero.io</a></li>
-    </ul>
+    <p>Dealerships list the bikes they have, and buyers browse and chat with them in the app. I started Yavero Labs and I write all of the mobile code. A teammate writes the backend.</p>
+    <p>One Kotlin Multiplatform project builds three apps. The buyer app and the dealer app run on Android and iOS, and a small desktop app handles admin work. We're testing on TestFlight and Firebase for now and aren't in the stores yet.</p>
   </div>
 </section>
 
 <section id="salzburg" aria-labelledby="h-sal">
   <div class="head">
-    <span class="mono">feb to mar 2026, solo</span>
+    <span class="mono">early 2026</span>
     <h2 id="h-sal">The Portfolio Gazette</h2>
-    <p>Amazon Nova Hackathon, Agentic AI category. Codename Salzburg. Built solo.</p>
+    <p>My entry for the Amazon Nova Hackathon. I built it alone over a few weeks.</p>
   </div>
   <div class="body">
-    <p>A grounded portfolio-risk copilot for retail investors. It takes your holdings, live quotes, headlines and macro data, then runs an agent investigation that cites its evidence. The risk score comes from a deterministic rules engine; the model never sets it.</p>
-    <p class="flow" aria-label="Agent loop: plan, fetch, verify, synthesize"><span>plan</span><span class="arrow">&rarr;</span><span>fetch</span><span class="arrow">&rarr;</span><span>verify</span><span class="arrow">&rarr;</span><span>synthesize</span></p>
-    <p>The analyst chat does what-if swaps, like replacing MSFT with NVDA, simulated before they're applied, one bounded change at a time with a safety check. Amazon Polly narrates an audio brief.</p>
-    <ul class="facts">
-      <li><span class="mono">model</span><span>Amazon Nova 2 Lite on AWS Bedrock, Converse and ConverseStream, with a bounded tool set.</span></li>
-      <li><span class="mono">data</span><span>Alpha Vantage. The first backend used its MCP server; the current one calls REST mirroring it.</span></li>
-      <li><span class="mono">tech</span><span>Kotlin 2.3. Shared KMP and contracts modules for Android, JVM and iOS. Jetpack Compose Android app, iOS app, Ktor 3.4 server streaming NDJSON, SQLite, Play Integrity, JWT sessions. Started as Python on Lambda, rewritten to Ktor and KMP.</span></li>
-      <li><span class="mono">ci</span><span>Spotless, Detekt, Kover, API compatibility checks, a Maestro demo flow.</span></li>
-    </ul>
+    <p>It reads your stock portfolio, pulls in live prices and news, and writes up what looks risky and why, with the evidence cited. The rule I cared about most was that the model never sets the risk score. A plain rules engine does that. The model does the digging and explains what it found.</p>
+    <p class="flow" aria-label="The agent plans, fetches, verifies, then writes"><span>plan</span><span class="arrow">&rarr;</span><span>fetch</span><span class="arrow">&rarr;</span><span>verify</span><span class="arrow">&rarr;</span><span>write</span></p>
+    <p>You can ask it what-ifs, like swapping one stock for another, and it simulates the change before applying it. Underneath it's Kotlin Multiplatform again, with a Ktor server and Amazon Nova on Bedrock. The code is private.</p>
   </div>
 </section>
 
 <section id="side" aria-labelledby="h-side">
   <div class="head">
-    <span class="mono">side projects</span>
+    <span class="mono">on the side</span>
     <h2 id="h-side">Smaller things</h2>
   </div>
   <div class="body">
     <dl>
-      <div><dt>Kothless</dt><dd>KMP passwordless auth library for Android and iOS. Public-key, passkey-style, keys held in the Keystore or Secure Enclave.</dd></div>
-      <div><dt>Brief</dt><dd>Python tool that audits Splunk apps for AI-agent readiness: scores saved searches, proposes descriptions as a diff, generates an MCP manifest. Hackathon project.</dd></div>
-      <div><dt>lokala</dt><dd>Self-hosted localization-string manager. Ktor, Exposed, PostgreSQL, Docker.</dd></div>
-      <div><dt>Aterna</dt><dd>KMP focus app with Decompose, SQLDelight and Koin.</dd></div>
-      <div><dt>POS</dt><dd>Compose Multiplatform desktop point-of-sale and inventory system with a Ktor and Postgres backend, built for a jewelry retailer.</dd></div>
+      <div><dt>Kothless</dt><dd>A passwordless login library for Kotlin Multiplatform. The keys live in the Android Keystore or the iOS Secure Enclave.</dd></div>
+      <div><dt>Brief</dt><dd>A Python tool that reads a Splunk app and tells you how ready it is for AI agents. Another hackathon.</dd></div>
+      <div><dt>lokala</dt><dd>A small self-hosted server for managing an app's translation strings.</dd></div>
+      <div><dt>Aterna</dt><dd>A focus app, built with Decompose and SQLDelight.</dd></div>
+      <div><dt>A shop system</dt><dd>A desktop point-of-sale and inventory app for a jewelry retailer, with a Ktor backend.</dd></div>
     </dl>
   </div>
 </section>
@@ -240,29 +190,22 @@ footer .clock::before{content:"\00B7";margin:0 .6em}
 <section id="before" aria-labelledby="h-before">
   <div class="head">
     <span class="mono">2021 to 2023</span>
-    <h2 id="h-before">Before Neo</h2>
+    <h2 id="h-before">Before that</h2>
   </div>
   <div class="body">
-    <ul class="prose-list">
-      <li><b>Monty Mobile, Android Engineer, Nov 2021 to Oct 2023.</b> MontyPay and Monty eSIM. Sole Android lead on the ground-up rewrite of the eSIM app in Jetpack Compose with Clean Architecture and MVI. Owned the release pipeline: GitLab CI, Play Console, staged rollouts. Set up JUnit and MockK test suites.</li>
-      <li><b>Toothpick, Junior Android Developer, Mar to Oct 2021.</b> Legacy Java codebase. Six features and over thirty critical bugs fixed in six months.</li>
-      <li><b>Lebanese University, B.Sc. Computer Science, 2018 to 2021.</b> JetBrains Academy Kotlin Developer certificate, 2023.</li>
-    </ul>
+    <p>I was at Monty Mobile for two years, where I rebuilt the Monty eSIM app in Jetpack Compose and ran the Android releases. Before Monty I spent a few months at Toothpick, a marketplace app for dentists, shipping features and fixing bugs in an old Java codebase.</p>
+    <p>I studied computer science at the Lebanese University and got the JetBrains Kotlin certificate in 2023.</p>
   </div>
 </section>
 
-<section id="skills" aria-labelledby="h-skills" class="skills">
+<section id="skills" aria-labelledby="h-skills">
   <div class="head">
-    <span class="mono">what I work with</span>
-    <h2 id="h-skills">Skills</h2>
+    <span class="mono">tools</span>
+    <h2 id="h-skills">What I use</h2>
   </div>
   <div class="body">
-    <p><span class="mono">kotlin</span>Kotlin Multiplatform, Compose Multiplatform, Jetpack Compose, expect/actual and iOS interop with SKIE and KMMBridge, Coroutines and Flow, Ktor, Navigation 3, Koin, Hilt, Gradle KTS with convention plugins. Java and RxJava2 on legacy code.</p>
-    <p><span class="mono">architecture</span>Clean Architecture, MVI and MVVM, modularization, architecture tests with Konsist, architecture decision records.</p>
-    <p><span class="mono">testing and ci</span>JUnit, MockK, Turbine, Robolectric, Roborazzi, Maestro, Detekt, Kover. GitLab CI and GitHub Actions.</p>
-    <p><span class="mono">security</span>Certificate pinning, Keystore and Secure Enclave signing, biometrics, encrypted storage, R8, freeRASP, Play Integrity. Spare time on TryHackMe for pentesting and reverse engineering.</p>
-    <p><span class="mono">ai</span>AWS Bedrock with Nova, agent loops with bounded tools, MCP, Amazon Polly.</p>
-    <p><span class="mono">ops</span>Firebase, Sentry, Crashlytics. English fluent, Arabic native.</p>
+    <p>Kotlin, mostly. Compose on Android and across platforms, coroutines, Ktor, Koin, and a fair amount of Gradle plumbing. For tests I reach for Maestro, Roborazzi and Konsist. I've spent a lot of time on mobile security, and lately on agents with Bedrock and MCP. In my spare time I do TryHackMe rooms.</p>
+    <p><a class="cv" href="cv.pdf">The CV has the full list.</a></p>
   </div>
 </section>
 
@@ -270,13 +213,14 @@ footer .clock::before{content:"\00B7";margin:0 .6em}
   <div class="head">
     <span class="mono">contact</span>
     <h2 id="h-contact">Say hello</h2>
+    <p>Email is the best way to reach me.</p>
   </div>
   <div class="body">
     <ul class="reach">
       <li><span class="mono">email</span><a href="mailto:mhammadjaber00@outlook.com">mhammadjaber00<wbr>@outlook.com</a></li>
       <li><span class="mono">linkedin</span><a href="https://www.linkedin.com/in/mj00">linkedin.com/in/mj00</a></li>
       <li><span class="mono">github</span><a href="https://github.com/moyaver">github.com/moyaver</a></li>
-      <li><span class="mono">cv</span><span><a href="cv.pdf">cv.pdf</a><small>One A4 page.</small></span></li>
+      <li><span class="mono">cv</span><a href="cv.pdf">cv.pdf</a></li>
     </ul>
   </div>
 </section>
@@ -303,9 +247,6 @@ footer .clock::before{content:"\00B7";margin:0 .6em}
   function tick(){try{clock.textContent='local time '+new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Beirut'}).format(new Date());clock.hidden=false}catch(e){}}
   tick();setInterval(tick,30000);
 })();
-</script>
-<script>
-(function(){var b=document.getElementById('pause');if(!b)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches){b.setAttribute('tabindex','-1');b.removeAttribute('aria-label');b.removeAttribute('aria-pressed');b.setAttribute('aria-hidden','true');return}b.addEventListener('click',function(){var on=document.documentElement.classList.toggle('still');b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',on?'Resume target rotation':'Pause target rotation')})})();
 </script>
 </body>
 </html>
