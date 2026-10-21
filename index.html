@@ -11,23 +11,23 @@
 <meta property="og:url" content="https://moyaver.github.io/">
 <meta name="theme-color" content="#F3F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFD21E'/%3E%3Cpath d='M6 25V8h4l6 9 6-9h4v17h-4V15l-6 8-6-8v10z' fill='%23121211'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F2EE'/%3E%3Cpath d='M6 25V8h4l6 9 6-9h4v17h-4V15l-6 8-6-8v10z' fill='%23121211'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Azeret+Mono:wght@400;500&display=swap">
 <style>
 /* One typeface, many widths. Archivo's wdth axis does the "one codebase, many targets" work. */
 :root{
-  --bg:#F3F2EE; --ink:#121211; --mute:#5C5A53; --rule:#C9C7BF; --hi:#FFD21E; --hi-ink:#121211;
+  --bg:#F3F2EE; --ink:#121211; --mute:#5C5A53; --rule:#C9C7BF; --hi:#B8921E; --hi-ink:#121211; --sel:#F2E3A8;
   --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
   --mono:"Azeret Mono",ui-monospace,Menlo,Consolas,monospace;
   --gutter:clamp(16px,4vw,56px);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#121211;--ink:#ECEAE3;--mute:#9D9B92;--rule:#33322E;--hi:#F2C614;color-scheme:dark}
+  :root:not([data-theme="light"]){--bg:#121211;--ink:#ECEAE3;--mute:#9D9B92;--rule:#33322E;--hi:#D1AC3A;--sel:#4A3F14;--hi-ink:#ECEAE3;color-scheme:dark}
 }
-:root[data-theme="dark"]{--bg:#121211;--ink:#ECEAE3;--mute:#9D9B92;--rule:#33322E;--hi:#F2C614;color-scheme:dark}
+:root[data-theme="dark"]{--bg:#121211;--ink:#ECEAE3;--mute:#9D9B92;--rule:#33322E;--hi:#D1AC3A;--sel:#4A3F14;--hi-ink:#ECEAE3;color-scheme:dark}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:16px}
@@ -35,8 +35,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(
 a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:var(--mute)}
 a:hover{text-decoration-color:var(--ink);text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-::selection{background:var(--hi);color:var(--hi-ink)}
-mark{background:var(--hi);color:var(--hi-ink);padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+::selection{background:var(--sel);color:var(--hi-ink)}
+mark{background:none;color:inherit;padding:0 0 .04em;border-bottom:2px solid var(--hi)}
 p{margin:0 0 1em;max-width:60ch}
 p:last-child{margin-bottom:0}
 .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.02em;text-transform:lowercase}
@@ -53,54 +53,56 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @media (max-width:640px){.top nav a:not([href="#contact"]){display:none}}
 
 /* hero */
-.hero{padding:clamp(48px,9vw,128px) 0 clamp(40px,7vw,96px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,56px)}
+.hero{padding:clamp(64px,12vw,176px) 0 clamp(56px,9vw,128px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,72px)}
 @media (min-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.hero .lede{margin-left:auto;width:min(100%,46ch)}}
-.decl{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:8px clamp(14px,2vw,28px)}
+.decl{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:10px clamp(16px,2.5vw,36px)}
 .decl .mono{color:var(--mute);padding-bottom:.45em}
-.big{font-weight:300;font-variation-settings:"wdth" 118,"wght" 300;font-size:clamp(2.4rem,8vw,7.6rem);line-height:.98;letter-spacing:-.025em;margin:0}
-.big b{font-variation-settings:"wdth" 118,"wght" 700;font-weight:700}
+.big{font-weight:300;font-variation-settings:"wdth" 108,"wght" 300;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.1;letter-spacing:-.02em;margin:0}
+.big b{font-variation-settings:"wdth" 108,"wght" 500;font-weight:500}
 .targets{position:relative;display:grid;min-height:1.05em}
-.targets span{grid-area:1/1;display:block;white-space:nowrap;font-variation-settings:"wdth" 62,"wght" 800;font-weight:800;font-size:clamp(2.4rem,8vw,7.6rem);line-height:.98;letter-spacing:-.01em;opacity:0;animation:tgt 7.2s infinite cubic-bezier(.3,0,.2,1)}
-.targets span:nth-child(2){animation-delay:2.4s}
-.targets span:nth-child(3){animation-delay:4.8s}
-.targets mark{padding:0 .1em 0 .12em}
-.targets:hover span,.still .targets span{animation-play-state:paused}
+.targets span{grid-area:1/1;display:block;white-space:nowrap;font-variation-settings:"wdth" 108,"wght" 500;font-weight:500;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.1;letter-spacing:-.02em;opacity:0;animation:tgt 10.5s infinite ease-in-out}
+.targets span:nth-child(2){animation-delay:3.5s}
+.targets span:nth-child(3){animation-delay:7s}
+.targets mark{padding:0}
+.still .targets span{animation:none;opacity:0}
+.still .targets span:first-child{opacity:1}
+@media (prefers-reduced-motion:reduce){#pause{pointer-events:none;cursor:default}}
 .decl button.mono{color:var(--mute);padding-bottom:.45em;text-align:left;min-height:44px;margin-bottom:-10px}
 .decl button.mono:hover{color:var(--ink)}
 @keyframes tgt{
-  0%{opacity:0;font-variation-settings:"wdth" 62,"wght" 800}
-  4%{opacity:1}
-  27%{opacity:1;font-variation-settings:"wdth" 118,"wght" 800}
-  32%,100%{opacity:0;font-variation-settings:"wdth" 118,"wght" 800}
+  0%{opacity:0}
+  8%{opacity:1}
+  24%{opacity:1}
+  31%,100%{opacity:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .targets{display:flex;flex-wrap:wrap;gap:.1em .3em}
-  .targets span{grid-area:auto;animation:none;opacity:1;font-variation-settings:"wdth" 118,"wght" 800}
+  .targets span{grid-area:auto;animation:none;opacity:1}
 }
-.lede{font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.45;max-width:46ch;font-variation-settings:"wdth" 100,"wght" 400}
+.lede{font-size:clamp(1.05rem,1.35vw,1.25rem);line-height:1.55;max-width:46ch;font-variation-settings:"wdth" 100,"wght" 400}
 .lede p{max-width:none}
 
 /* sections */
-section{border-top:1px solid var(--rule);padding:clamp(28px,4vw,56px) 0 clamp(40px,6vw,88px);display:grid;grid-template-columns:minmax(0,1fr);gap:20px 48px}
+section{border-top:1px solid var(--rule);padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,112px);display:grid;grid-template-columns:minmax(0,1fr);gap:24px 64px}
 @media (min-width:860px){section{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
 .head{align-self:start}
 @media (min-width:860px){.head{position:sticky;top:24px}}
 .head .mono{color:var(--mute);display:block;margin-bottom:10px}
-h2{margin:0;font-weight:800;font-variation-settings:"wdth" 62,"wght" 800;font-size:clamp(2.4rem,6vw,5.4rem);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;overflow-wrap:anywhere}
-.head p{margin-top:18px;color:var(--mute);max-width:34ch;font-variation-settings:"wdth" 100,"wght" 400}
+h2{margin:0;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:clamp(1.5rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-.015em}
+.head p{margin-top:14px;color:var(--mute);max-width:34ch;font-variation-settings:"wdth" 100,"wght" 400}
 .body>*+*{margin-top:1.6em}
 h3{margin:0 0 .35em;font-size:1.05rem;font-weight:600;font-variation-settings:"wdth" 100,"wght" 600}
 .facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
 .facts li{display:grid;grid-template-columns:minmax(120px,9rem) minmax(0,1fr);gap:4px 20px;padding:12px 0;border-bottom:1px solid var(--rule)}
 .facts li .mono{color:var(--mute);padding-top:.2em}
 @media (max-width:420px){.facts li{grid-template-columns:minmax(0,1fr)}}
-.flow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .5em;font-weight:700;font-variation-settings:"wdth" 62,"wght" 700;font-size:clamp(1.6rem,3.6vw,3rem);line-height:1;text-transform:uppercase;margin:0}
+.flow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em .5em;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.2;margin:0}
 .flow .arrow{font-variation-settings:"wdth" 100,"wght" 300;font-weight:300;color:var(--mute)}
 .apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
 @media (max-width:520px){.apps{grid-template-columns:minmax(0,1fr)}}
-.apps li{border-top:2px solid var(--ink);padding-top:10px}
-.apps b{display:block;font-weight:800;font-variation-settings:"wdth" 70,"wght" 800;font-size:1.7rem;line-height:1;text-transform:uppercase}
+.apps li{border-top:1px solid var(--ink);padding-top:10px}
+.apps b{display:block;font-weight:500;font-variation-settings:"wdth" 100,"wght" 500;font-size:1.15rem;line-height:1.2}
 .apps span{display:block;color:var(--mute);margin-top:6px}
 .prose-list{margin:0;padding:0;list-style:none}
 .prose-list li{padding:10px 0;border-bottom:1px solid var(--rule)}
@@ -120,10 +122,10 @@ dd b{color:var(--ink);font-weight:500}
 /* contact */
 .contact{padding-bottom:clamp(60px,8vw,120px)}
 .email{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px}
-.email a{font-weight:300;font-variation-settings:"wdth" 110,"wght" 300;font-size:clamp(1.25rem,2.7vw,2.5rem);line-height:1.1;letter-spacing:-.02em;text-decoration-thickness:1px;overflow-wrap:break-word;user-select:all}
+.email a{font-weight:400;font-variation-settings:"wdth" 104,"wght" 400;font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.2;letter-spacing:-.01em;text-decoration-thickness:1px;overflow-wrap:break-word;user-select:all}
 .copy{min-height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;font-family:var(--mono);font-size:.78rem;letter-spacing:.02em}
 .copy:hover{border-color:var(--ink)}
-.copy[data-done="1"]{background:var(--hi);color:var(--hi-ink);border-color:var(--hi)}
+.copy[data-done="1"]{border-color:var(--hi);color:var(--hi)}
 .links{display:flex;flex-wrap:wrap;gap:8px 28px;margin:28px 0 0;padding:0;list-style:none}
 footer{border-top:1px solid var(--rule);padding:20px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;color:var(--mute)}
 </style>
@@ -145,7 +147,7 @@ footer{border-top:1px solid var(--rule);padding:20px 0 40px;display:flex;justify
   <h1 id="h1" class="decl" style="margin:0;font:inherit" aria-label="One Kotlin codebase. Android, iOS and desktop.">
     <span class="mono">expect</span>
     <span class="big">one <b>Kotlin</b> codebase.</span>
-    <button class="mono" id="pause" type="button" aria-pressed="false" title="Pause the animation">actual</button>
+    <button class="mono" id="pause" type="button" aria-pressed="false" aria-label="Pause target rotation">actual</button>
     <span class="targets" aria-hidden="true">
       <span><mark>Android</mark></span>
       <span><mark>iOS</mark></span>
@@ -164,8 +166,8 @@ footer{border-top:1px solid var(--rule);padding:20px 0 40px;display:flex;justify
     <p>Senior Android Engineer at Neo MENA Technologies, working on a Gulf bank's investment platform.</p>
   </div>
   <div class="body">
-    <p>I architected and co-lead the Compose Multiplatform rewrite of the bank's investment, wealth and brokerage app for Android and iOS. Onboarding and KYC with national-ID video verification, MFA and biometric login, risk profiling, funds, brokerage holdings, goals. I built the first prototype, wrote most of the architecture decision records, and put together an internal onboarding site so new engineers could find their way around the codebase.</p>
-    <p>Alongside the rewrite, I migrated native Android modules from MVP and RxJava2 to Compose, coroutines and Flow, cut the production crash rate by 20%, and built Maestro UI automation suites.</p>
+    <p>Co-leading the Compose Multiplatform rewrite of a Gulf bank's investment, wealth and brokerage app for Android and iOS. The app covers onboarding and KYC, authentication, risk profiling, funds, holdings and goals. My work focuses on architecture and security, including the initial prototype, architecture decision records and internal onboarding documentation.</p>
+    <p>On the native Android app, migrated MVP and RxJava2 modules to Compose, coroutines and Flow, reduced the production crash rate by 20%, and built Maestro UI automation suites.</p>
     <ul class="facts">
       <li><span class="mono">stack</span><span>Kotlin 2.4, Compose Multiplatform 1.12, Navigation 3, Ktor 3.5, MVI. No DI framework: wiring is explicit, by ADR. SKIE and KMMBridge for the iOS side.</span></li>
       <li><span class="mono">security</span><span>Device-bound request signing with ECDSA P-256 keys that never leave the Android Keystore or iOS Secure Enclave, fail-closed. Always-on certificate pinning in production. freeRASP for root, jailbreak and tamper detection. Encrypted cache.</span></li>
@@ -306,7 +308,7 @@ footer{border-top:1px solid var(--rule);padding:20px 0 40px;display:flex;justify
 })();
 </script>
 <script>
-(function(){var b=document.getElementById('pause');if(!b)return;b.addEventListener('click',function(){var on=document.documentElement.classList.toggle('still');b.setAttribute('aria-pressed',on?'true':'false');b.title=on?'Play the animation':'Pause the animation'})})();
+(function(){var b=document.getElementById('pause');if(!b)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches){b.setAttribute('tabindex','-1');b.removeAttribute('aria-label');b.removeAttribute('aria-pressed');b.setAttribute('aria-hidden','true');return}b.addEventListener('click',function(){var on=document.documentElement.classList.toggle('still');b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',on?'Resume target rotation':'Pause target rotation')})})();
 </script>
 </body>
 </html>
