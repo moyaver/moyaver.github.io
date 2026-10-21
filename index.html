@@ -9,17 +9,17 @@
 <meta property="og:title" content="Mohammad Jaber">
 <meta property="og:description" content="Android and Kotlin Multiplatform engineer in Beirut. One Kotlin codebase for Android, iOS and desktop.">
 <meta property="og:url" content="https://moyaver.github.io/">
-<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#151411" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAF6EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171410" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%231A1915'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist+Mono:wght@400&display=swap">
 <style>
 /* A letter, not a dashboard. One column of Newsreader; Geist Mono only for dates and the contact labels. */
-:root{--bg:#FBFAF7;--ink:#1A1915;--mute:#67645B;--rule:#E3E0D8;--hi:#B8921E;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151411;--ink:#ECE8DF;--mute:#A09C90;--rule:#2C2A25;--hi:#D1AC3A;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#151411;--ink:#ECE8DF;--mute:#A09C90;--rule:#2C2A25;--hi:#D1AC3A;color-scheme:dark}
+:root{--bg:#FAF6EE;--ink:#1C1915;--mute:#6A655A;--rule:#E4DFD3;--hi:#B8921E;--neo:#B8921E;--yav:#4F7D77;--gaz:#4A5E86;--paper:#FFFDF8;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171410;--ink:#ECE6DA;--mute:#A39D90;--rule:#2E2A23;--hi:#D1AC3A;--neo:#D1AC3A;--yav:#7FB0A9;--gaz:#8FA3CC;--paper:#1F1B16;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171410;--ink:#ECE6DA;--mute:#A39D90;--rule:#2E2A23;--hi:#D1AC3A;--neo:#D1AC3A;--yav:#7FB0A9;--gaz:#8FA3CC;--paper:#1F1B16;color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.1875rem/1.55 "Newsreader",Georgia,"Times New Roman",serif;font-variation-settings:"opsz" 18;overflow-x:clip}
@@ -70,6 +70,20 @@ footer a{text-decoration:none;min-height:44px;display:inline-flex;align-items:ce
 footer a:hover{text-decoration:underline}
 #clock:not(:empty)::before{content:"\00B7";margin:0 .5em}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}a{transition:none}}
+/* Sketches of what he builds. Hand-made in HTML/SVG, never screenshots. They sit a degree off and settle when you look at them. */
+figure.sk{margin:22px 0 26px;transform:rotate(-.8deg);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+figure.sk:hover,figure.sk:focus-within{transform:none}
+.sk .card{background:var(--paper);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 0 var(--rule),0 12px 28px -18px rgba(28,25,21,.35);overflow:hidden;color:var(--ink)}
+.sk figcaption{margin-top:10px}
+.sk svg{display:block;width:100%;height:auto}
+.sk .gl{stroke:currentColor;opacity:.22;stroke-width:3;stroke-linecap:round}
+figure.sk + h2{margin-top:clamp(40px,8vw,64px)}
+em.k{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:var(--acc,var(--hi))}
+#neo,#neo~*{--acc:var(--neo)}#yavero,#yavero~*{--acc:var(--yav)}#salzburg,#salzburg~*{--acc:var(--gaz)}#side,#side~*{--acc:var(--hi)}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+main,header{animation:rise .4s ease-out both}
+@media (prefers-reduced-motion:reduce){main,header{animation:none}figure.sk{transform:none;transition:none}}
+
 </style>
 </head>
 <body>
@@ -99,15 +113,62 @@ footer a:hover{text-decoration:underline}
 <p>I built the first prototype and wrote most of the architecture decisions down, so new people can read why things are the way they are. I also built the security side. Requests are signed with keys held in the Android Keystore and the iOS Secure Enclave, certificates are pinned, and the app checks for rooted or tampered devices.</p>
 <p>On the native Android app I moved old RxJava screens to Compose and got the crash rate down by about a fifth.</p>
 
+<figure class="sk" aria-label="Sketch: a request leaving the app, signed by a key that stays on the device">
+<div class="card"><svg viewBox="0 0 560 150" role="img" aria-hidden="true" style="font-family:'Geist Mono',monospace;font-size:12px">
+<rect x="22" y="26" width="300" height="98" rx="5" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="38" y="52" fill="currentColor">POST /api</text>
+<text x="38" y="74" fill="currentColor" opacity=".55">body  3f9a…c1</text>
+<text x="38" y="96" fill="currentColor" opacity=".55">nonce 71de…08</text>
+<text x="38" y="118" fill="var(--neo)">sig   3045 0221 00e7…  P-256</text>
+<path d="M322 75 H392" stroke="currentColor" opacity=".35" stroke-dasharray="3 5"/>
+<rect x="392" y="40" width="146" height="70" rx="5" fill="var(--neo)" opacity=".12"/>
+<rect x="392" y="40" width="146" height="70" rx="5" fill="none" stroke="var(--neo)" opacity=".8"/>
+<text x="412" y="66" fill="currentColor">Keystore /</text><text x="412" y="84" fill="currentColor">Secure Enclave</text>
+<text x="412" y="102" fill="currentColor" opacity=".55">key never leaves</text>
+</svg></div>
+<figcaption class="mono">Roughly how a request leaves the app. The key stays on the phone.</figcaption>
+</figure>
+
 <h2 id="yavero"><span class="mono">2025 to now</span>Yavero Auto</h2>
 <p class="sub">A place to buy a motorcycle in Lebanon. In beta at <a href="https://auto.yavero.io">auto.yavero.io</a>.</p>
 <p>Dealerships list the bikes they have, and buyers browse and chat with them in the app. I founded Yavero Labs and <em class="k">I write all of the mobile code</em>. A teammate writes the backend.</p>
 <p>One Kotlin Multiplatform project builds three apps. The buyer app and the dealer app run on Android and iOS, and a small desktop app handles admin work. They're in beta through TestFlight and Firebase App Distribution and aren't in the stores yet.</p>
 
+<figure class="sk" aria-label="Sketch of a motorcycle listing screen, not the real app">
+<div class="card" style="max-width:280px;margin:0 auto;border-radius:22px"><svg viewBox="0 0 280 400" role="img" aria-hidden="true" style="font-family:'Geist Mono',monospace;font-size:11px">
+<rect x="0" y="0" width="280" height="400" fill="var(--paper)"/>
+<text x="20" y="38" fill="currentColor" font-family="Newsreader,serif" font-size="20">Bikes in Beirut</text>
+<rect x="20" y="52" width="240" height="26" rx="13" fill="currentColor" opacity=".06"/><text x="34" y="69" fill="currentColor" opacity=".5">search</text>
+<g><rect x="20" y="92" width="240" height="120" rx="10" fill="var(--yav)" opacity=".16"/>
+<path d="M62 182a16 16 0 1 0 .1 0M190 182a16 16 0 1 0 .1 0M78 182l22-36h40l20 24h30M100 146l-14-16h22" fill="none" stroke="var(--yav)" stroke-width="3" stroke-linecap="round"/>
+<text x="32" y="238" fill="currentColor">Example bike · 9,800 km</text><text x="32" y="256" fill="currentColor" opacity=".55">Dealer in Beirut</text><text x="200" y="238" fill="var(--yav)">chat</text></g>
+<rect x="20" y="276" width="240" height="18" rx="4" fill="currentColor" opacity=".06"/><rect x="20" y="302" width="200" height="18" rx="4" fill="currentColor" opacity=".06"/><rect x="20" y="328" width="220" height="18" rx="4" fill="currentColor" opacity=".06"/>
+<rect x="0" y="366" width="280" height="34" fill="currentColor" opacity=".04"/><rect x="40" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/><rect x="125" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/><rect x="210" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/>
+</svg></div>
+<figcaption class="mono">A sketch of a listing screen, not the real app.</figcaption>
+</figure>
+
 <h2 id="salzburg"><span class="mono">early 2026</span>The Portfolio Gazette</h2>
 <p class="sub">My solo entry for the Amazon Nova Hackathon, February to March 2026.</p>
 <p>It reads your stock portfolio, pulls in live prices and news, and writes up what looks risky and why, with the evidence cited. The rule I cared about most was that <em class="k">the model never sets the risk score</em>. A plain rules engine does that. The model does the digging and explains what it found.</p>
 <p>You can ask it what-ifs, like swapping one stock for another, and it simulates the change before applying it. Underneath it's Kotlin Multiplatform again, with a Ktor server and Amazon Nova on Bedrock. The code is private.</p>
+
+<figure class="sk" aria-label="Sketch of The Portfolio Gazette drawn as a newspaper front page">
+<div class="card"><svg viewBox="0 0 560 330" role="img" aria-hidden="true" style="font-family:Newsreader,serif">
+<rect x="0" y="0" width="560" height="330" fill="var(--paper)"/>
+<text x="280" y="44" text-anchor="middle" fill="currentColor" font-size="30" font-weight="500">The Portfolio Gazette</text>
+<line x1="24" y1="56" x2="536" y2="56" stroke="currentColor" opacity=".5"/><line x1="24" y1="59" x2="536" y2="59" stroke="currentColor" opacity=".5"/>
+<text x="24" y="74" fill="currentColor" font-family="'Geist Mono',monospace" font-size="10" opacity=".6">FEBRUARY 2026</text><text x="536" y="74" text-anchor="end" fill="currentColor" font-family="'Geist Mono',monospace" font-size="10" opacity=".6">EXAMPLE SCORE · RULES ENGINE</text>
+<text x="24" y="108" fill="currentColor" font-size="22">Two holdings carry most of the risk</text>
+<text x="24" y="128" fill="currentColor" font-size="12" font-style="italic" opacity=".7">Sources cited below. The model explains; the score is computed.</text>
+<g class="gl" fill="none"><path d="M24 150h160M24 162h150M24 174h158M24 186h120M24 198h160M24 210h148M24 222h156M24 234h100"/>
+<path d="M200 150h160M200 162h142M200 174h158M200 186h130M200 198h160M200 210h150M200 222h120"/>
+<path d="M376 150h160M376 162h148M376 174h158M376 186h126M376 198h160M376 210h140M376 222h156M376 234h110"/></g>
+<rect x="200" y="246" width="160" height="60" rx="3" fill="var(--gaz)" opacity=".14"/><polyline points="212,296 236,284 258,290 282,268 306,276 330,258 350,262" fill="none" stroke="var(--gaz)" stroke-width="2"/>
+<g class="gl" fill="none"><path d="M24 258h160M24 270h150M24 282h158M24 294h120M376 258h160M376 270h148M376 282h158M376 294h120"/></g>
+</svg></div>
+<figcaption class="mono">A sketch of the Gazette's front page.</figcaption>
+</figure>
 
 <h2 id="side"><span class="mono">on the side</span>Smaller things</h2>
 <dl>
