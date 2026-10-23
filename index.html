@@ -56,8 +56,9 @@ header button{min-height:44px;padding:0 2px}
 @media (max-width:480px){header{flex-wrap:wrap;gap:4px 12px}header nav{gap:12px}header a{min-height:40px}}
 
 .hero{padding:clamp(56px,12vw,112px) 0 clamp(28px,5vw,40px);display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:end}
-.hero:has(#portrait:not([hidden])){grid-template-columns:104px minmax(0,1fr)}
-#portrait{width:104px;height:128px;object-fit:cover;border-radius:4px;display:block}
+.hero:has(#portrait:not([hidden])){grid-template-columns:152px minmax(0,1fr)}
+#portrait{width:152px;height:190px;object-fit:cover;border-radius:6px;display:block;border:1px solid var(--rule)}
+@media (max-width:480px){.hero:has(#portrait:not([hidden])){grid-template-columns:104px minmax(0,1fr)}#portrait{width:104px;height:130px}}
 #portrait[hidden]{display:none}
 .role{margin:0 0 8px}
 .acts{margin:4px 0 0;grid-column:1/-1;font-size:1.05rem}.acts a{display:inline-block;padding:8px 0}.acts span{color:var(--mute);margin:0 .4em}
@@ -94,6 +95,7 @@ figure.sk:hover,figure.sk:focus-within{transform:none}
 .sk figcaption{margin-top:10px}
 .sk svg{display:block;width:100%;height:auto}
 .sk.ill img{display:block;width:100%;height:auto}
+figure.vig{max-width:420px;margin:10px 0 22px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sk.ill img{filter:brightness(.86) contrast(1.05)}}
 :root[data-theme="dark"] .sk.ill img{filter:brightness(.86) contrast(1.05)}
 .sk .gl{stroke:currentColor;opacity:.22;stroke-width:3;stroke-linecap:round}
@@ -116,8 +118,7 @@ header{animation:rise .4s ease-out both}
 
 <main>
 <section class="hero" aria-labelledby="h1">
-  <!-- Portrait: drop a file at assets/me.jpg and remove the hidden attribute. -->
-  <img id="portrait" data-src="assets/me.jpg" alt="Mohammad Jaber" width="104" height="128" hidden>
+  <img id="portrait" src="assets/me.jpg" alt="Ink drawing of Mohammad Jaber" width="640" height="800">
   <div>
     <p class="role mono">Senior Android &amp; Kotlin Multiplatform engineer &middot; Beirut</p>
     <h1 id="h1">Mohammad Jaber</h1>
@@ -155,24 +156,15 @@ header{animation:rise .4s ease-out both}
 <p>It reads your stock portfolio, pulls in live prices and news, and writes up what looks risky and why, with the evidence cited. The rule I cared about most was that <em class="k">the model never sets the risk score</em>. A plain rules engine does that. The model does the digging and explains what it found.</p>
 <p>You can ask it what-ifs, like swapping one stock for another, and it simulates the change before applying it. Underneath it's Kotlin Multiplatform again, with a Ktor server and Amazon Nova on Bedrock. The code is private.</p>
 
-<figure class="sk" aria-label="Sketch of a Salzburg report drawn as a newspaper front page">
-<div class="card"><svg viewBox="0 0 560 330" role="img" aria-hidden="true" style="font-family:Newsreader,serif">
-<rect x="0" y="0" width="560" height="330" fill="var(--paper)"/>
-<text x="280" y="44" text-anchor="middle" fill="currentColor" font-size="30" font-weight="500">Salzburg</text>
-<line x1="24" y1="56" x2="536" y2="56" stroke="currentColor" opacity=".5"/><line x1="24" y1="59" x2="536" y2="59" stroke="currentColor" opacity=".5"/>
-<text x="24" y="78" fill="currentColor" font-family="'Geist Mono',monospace" font-size="18" opacity=".7">FEBRUARY 2026</text><text x="536" y="78" text-anchor="end" fill="currentColor" font-family="'Geist Mono',monospace" font-size="18" opacity=".7">RULES ENGINE SCORE</text>
-<text x="24" y="114" fill="currentColor" font-size="27">Two holdings carry most of the risk</text>
-<text x="24" y="138" fill="currentColor" font-size="18" font-style="italic" opacity=".75">Sources cited. The score is computed, not guessed.</text>
-<g class="gl" fill="none"><path d="M24 150h160M24 162h150M24 174h158M24 186h120M24 198h160M24 210h148M24 222h156M24 234h100"/>
-<path d="M200 150h160M200 162h142M200 174h158M200 186h130M200 198h160M200 210h150M200 222h120"/>
-<path d="M376 150h160M376 162h148M376 174h158M376 186h126M376 198h160M376 210h140M376 222h156M376 234h110"/></g>
-<rect x="200" y="246" width="160" height="60" rx="3" fill="var(--gaz)" opacity=".14"/><polyline points="212,296 236,284 258,290 282,268 306,276 330,258 350,262" fill="none" stroke="var(--gaz)" stroke-width="2"/>
-<g class="gl" fill="none"><path d="M24 258h160M24 270h150M24 282h158M24 294h120M376 258h160M376 270h148M376 282h158M376 294h120"/></g>
-</svg></div>
-<figcaption class="mono">A sketch of a Salzburg report, laid out like a front page.</figcaption>
+<figure class="sk ill">
+<div class="card"><img src="assets/salzburg.jpg" alt="Ink drawing of a newspaper, coffee and a phone on a café table, with Salzburg rooftops behind" width="1600" height="900" loading="lazy" decoding="async"></div>
+<figcaption class="mono">The morning report, roughly.</figcaption>
 </figure>
 
 <h2 id="side"><span class="mono">on the side</span>Smaller things</h2>
+<figure class="sk ill vig">
+<div class="card"><img src="assets/side.jpg" alt="" width="1200" height="600" loading="lazy" decoding="async"></div>
+</figure>
 <dl>
   <div><dt>Kothless</dt><dd>A passwordless login library for Kotlin Multiplatform. The keys live in the Android Keystore or the iOS Secure Enclave.</dd></div>
   <div><dt>Brief</dt><dd>A Python tool that reads a Splunk app and tells you how ready it is for AI agents. Another hackathon.</dd></div>
@@ -182,14 +174,23 @@ header{animation:rise .4s ease-out both}
 </dl>
 
 <h2 id="before"><span class="mono">2021 to 2023</span>Before that</h2>
+<figure class="sk ill vig">
+<div class="card"><img src="assets/before.jpg" alt="" width="1200" height="600" loading="lazy" decoding="async"></div>
+</figure>
 <p>I was at Monty Mobile for two years, where I rebuilt the Monty eSIM app in Jetpack Compose and ran the Android releases. Before Monty I spent a few months at Toothpick, a marketplace app for dentists, shipping features and fixing bugs in an old Java codebase.</p>
 <p>I studied computer science at the Lebanese University and got the JetBrains Kotlin certificate in 2023.</p>
 
 <h2 id="tools"><span class="mono">tools</span>What I use</h2>
+<figure class="sk ill vig">
+<div class="card"><img src="assets/tools.jpg" alt="" width="1200" height="600" loading="lazy" decoding="async"></div>
+</figure>
 <p>Kotlin, mostly. Compose on Android and across platforms, coroutines, Ktor, Koin, and a fair amount of Gradle plumbing. For tests I reach for Maestro, Roborazzi and Konsist. I've spent a lot of time on mobile security, and lately on agents with Bedrock and MCP. In my spare time I do TryHackMe rooms.</p>
 <p><a href="cv.pdf">The CV has the full list.</a></p>
 
 <h2 id="contact"><span class="mono">contact</span>Say hello</h2>
+<figure class="sk ill vig">
+<div class="card"><img src="assets/hello.jpg" alt="" width="1200" height="600" loading="lazy" decoding="async"></div>
+</figure>
 <p class="sub">Email is the best way to reach me.</p>
 <ul class="reach">
   <li><span class="mono">email</span><a href="mailto:mhammadjaber00@outlook.com">mhammadjaber00@outlook.com</a></li>
