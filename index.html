@@ -93,6 +93,9 @@ figure.sk:hover,figure.sk:focus-within{transform:none}
 .sk .card{background:var(--paper);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 0 var(--rule),0 12px 28px -18px rgba(28,25,21,.35);overflow:hidden;color:var(--ink)}
 .sk figcaption{margin-top:10px}
 .sk svg{display:block;width:100%;height:auto}
+.sk.ill img{display:block;width:100%;height:auto}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sk.ill img{filter:brightness(.86) contrast(1.05)}}
+:root[data-theme="dark"] .sk.ill img{filter:brightness(.86) contrast(1.05)}
 .sk .gl{stroke:currentColor;opacity:.22;stroke-width:3;stroke-linecap:round}
 figure.sk + h2{margin-top:clamp(40px,8vw,64px)}
 em.k{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:var(--acc,var(--hi))}
@@ -129,41 +132,22 @@ header{animation:rise .4s ease-out both}
 <p class="sub">Senior Android engineer at Neo MENA Technologies, a fintech company in Beirut.</p>
 <p>At Neo I build a Gulf bank's investment app with Kotlin Multiplatform and Compose Multiplatform. It is the whole app, from onboarding and ID checks through to funds and brokerage holdings, <em class="k">on Android and iOS from one Kotlin codebase</em>.</p>
 <p>I built the first prototype and wrote most of the architecture decisions down, so new people can read why things are the way they are. I also built the security side. Requests are signed with keys held in the Android Keystore and the iOS Secure Enclave, certificates are pinned, and the app checks for rooted or tampered devices.</p>
-<p>On the native Android app I moved old RxJava screens to Compose and got the crash rate down by about a fifth, tracked in Crashlytics and Sentry.</p>
-
-<figure class="sk" aria-label="Sketch: a request leaving the app, signed by a key that stays on the device">
-<div class="card"><svg viewBox="0 0 560 190" role="img" aria-hidden="true" style="font-family:'Geist Mono',monospace;font-size:17px">
-<rect x="20" y="22" width="312" height="146" rx="6" fill="none" stroke="currentColor" opacity=".35"/>
-<text x="38" y="56" fill="currentColor">POST /api</text>
-<text x="38" y="88" fill="currentColor" opacity=".6">body  3f9a…c1</text>
-<text x="38" y="118" fill="currentColor" opacity=".6">nonce 71de…08</text>
-<text x="38" y="150" fill="var(--neo-t)">sig  3045…e7  P-256</text>
-<path d="M332 95 H386" stroke="currentColor" opacity=".35" stroke-dasharray="3 5"/>
-<rect x="386" y="48" width="154" height="94" rx="6" fill="var(--neo)" opacity=".12"/>
-<rect x="386" y="48" width="154" height="94" rx="6" fill="none" stroke="var(--neo)" opacity=".8"/>
-<text x="402" y="84" fill="currentColor">Secure key</text>
-<text x="402" y="116" fill="var(--neo-t)">never leaves</text>
-</svg></div>
-<figcaption class="mono">Roughly how a request leaves the app. The key stays on the phone.</figcaption>
+<figure class="sk ill">
+<div class="card"><img src="assets/neo.jpg" alt="Ink drawing of a desk with a laptop showing code and two phones running the same app" width="1600" height="900" loading="lazy" decoding="async"></div>
+<figcaption class="mono">Same app, two phones.</figcaption>
 </figure>
+
+
+
 
 <h2 id="yavero"><span class="mono">2025 to now</span>Yavero Auto</h2>
 <p class="sub">A place to buy a motorcycle in Lebanon. In beta at <a href="https://auto.yavero.io">auto.yavero.io</a>.</p>
 <p>Dealerships list the bikes they have, and buyers browse and chat with them in the app. I founded Yavero Labs and <em class="k">I write all of the mobile code</em>. A teammate writes the backend.</p>
 <p>One Kotlin Multiplatform project builds three apps. The buyer app and the dealer app run on Android and iOS, and a small desktop app handles admin work. They're in beta through TestFlight and Firebase App Distribution and aren't in the stores yet.</p>
 
-<figure class="sk" aria-label="Sketch of a motorcycle listing screen, not the real app">
-<div class="card" style="max-width:280px;margin:0 auto;border-radius:22px"><svg viewBox="0 0 280 400" role="img" aria-hidden="true" style="font-family:'Geist Mono',monospace;font-size:12.5px">
-<rect x="0" y="0" width="280" height="400" fill="var(--paper)"/>
-<text x="20" y="38" fill="currentColor" font-family="Newsreader,serif" font-size="20">Bikes in Beirut</text>
-<rect x="20" y="52" width="240" height="26" rx="13" fill="currentColor" opacity=".06"/><text x="34" y="69" fill="currentColor" opacity=".5">search</text>
-<g><rect x="20" y="92" width="240" height="120" rx="10" fill="var(--yav)" opacity=".16"/>
-<path d="M62 182a16 16 0 1 0 .1 0M190 182a16 16 0 1 0 .1 0M78 182l22-36h40l20 24h30M100 146l-14-16h22" fill="none" stroke="var(--yav)" stroke-width="3" stroke-linecap="round"/>
-<text x="32" y="238" fill="currentColor">Example bike · 9,800 km</text><text x="32" y="258" fill="currentColor" opacity=".6">Dealer in Beirut</text><text x="212" y="238" fill="var(--yav-t)">chat</text></g>
-<rect x="20" y="276" width="240" height="18" rx="4" fill="currentColor" opacity=".06"/><rect x="20" y="302" width="200" height="18" rx="4" fill="currentColor" opacity=".06"/><rect x="20" y="328" width="220" height="18" rx="4" fill="currentColor" opacity=".06"/>
-<rect x="0" y="366" width="280" height="34" fill="currentColor" opacity=".04"/><rect x="40" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/><rect x="125" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/><rect x="210" y="380" width="30" height="4" rx="2" fill="currentColor" opacity=".3"/>
-</svg></div>
-<figcaption class="mono">A sketch of a listing screen, not the real app.</figcaption>
+<figure class="sk ill">
+<div class="card"><img src="assets/yavero.jpg" alt="Ink drawing of a motorcycle parked on a Beirut street, next to a phone showing a bike listing" width="1600" height="900" loading="lazy" decoding="async"></div>
+<figcaption class="mono">Bikes, balconies, and a listing on the phone.</figcaption>
 </figure>
 
 <h2 id="salzburg"><span class="mono">early 2026</span>Salzburg</h2>
